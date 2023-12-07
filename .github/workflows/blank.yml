@@ -1,0 +1,25 @@
+name: Build and Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Hello there
+        run: echo "Hello there guys!!"
+      - name : Its first Workflow job
+        run: echo "Its first Workflow job"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: docker info
+        run: docker --help
+      - name: python version
+        run: echo "Python version is:" && python -V
+    
+  
